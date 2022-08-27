@@ -1,0 +1,129 @@
+# NFS: Network file sharing/ Network file service.
+
+Server: On which services run.
+Client: Which use that services.
+IN COMPNY LIVE SCANRIO:
+ MUltilpe services of Protocol: (used in a company)
+ 1- NFS
+ 2-FTP
+ 3-Samba
+ 4-DHCP
+ 5-DNS
+ 
+ If we run the all services in signe server (we can becuse each service have unique port) it can can problem of failure. If server down no service will be avaible.
+ In company make clusters of server called Heigh avaibility. 
+ So, In company we sagrigate the service with different server.
+ 
+ NFS detail:
+ 1- It run on port 2049.
+ 2- Works on UDP protocol.
+ 3- Provide Linux to linux service (Standard) but therea are workaround for linux to window al well.
+ 4- Does not ask for username and password: Drwaback
+ 
+ SAMBA: file server
+ 1- It run on 137/139/335 port
+ 2- Wrks on TCP protocol.
+ 3- Linux to linux , linux to window
+ 4- Require username and password.
+ 
+ In general Samaba is good than NFS. BUT nfs is faster than Samaba. In AWS EFS is similar to NFS. 
+ 
+ 
+ ### SETEPS FOR NFS CREATING
+ NOTE: Here we are using Centos-7 as Server and Centos-6 as Client. WE need IP for server and Client.
+ 
+ ```
+ ip r l : to check ip
+ ifconfig : To check ip
+ route -n : To check GATEWAY IP
+ ```
+ ##### STEPS to create SERVER and CLIENT MODEL
+
+ ```
+ 1- SET hotname of machine.
+ RHEL-7
+ hostnamectl set-hostname <name like server1.example.com> --static : tempraray set
+ /etc/hostname : add name here for perminant.
+ hostnamectl: check hostname
+ 
+ RHEL-6
+ hostname <name like server1.example.com>  temprary
+ /etc/sysconfig/network : add name here for perminant. after change if not show hostname refresh system **su -** cmd.
+ hostname: check add hostname
+ 
+ 2- Link the host with IPs.
+ standard ways using DNS:  name to ip mapping.
+ However, we use FLAT DNS: Other type of DNS. _/etc/hosts_ this is the FLAT DNS. WE add the ip and link it with hostname. 
+ 
+ NOTE: Every appliction first chcek this file if not find then visit the actual DNS.
+ So, we add the IP and server/client name. First check the IPs of the yuour machine using IPs cmd and map it with hostname
+ Example:
+ 192.1.1.1 server1.example.com
+ 
+ We can also cretae short name
+  192.1.1.1 server1.example.com <serve1>: here server1 is the shortname
+check 
+ping server1
+
+Similary as above we can cretae Client hots and server host and add mapp then it ips. TO make communction b/w then add both ips into etc/hosts file.
+
+ ```
+
+ ##### NFS_SERVER
+```
+1- Create Server as above Steps. (Chcek communicate with Client)
+2- Install NFS:
+ rpm -qa | grep -i nfs-utils : check this pkg/ if not then istall it
+ yum install nfs-utils -y
+3- Start Service:
+ systemctl restart rpcbind: its is a dependency of nfs
+ systemctl restart nfs
+4- To make auto start theese seevices  while boot.
+ systemctl enable rpcbind
+ systemctl enable nfs5
+5- Chcek NFS port is open or not
+netstat -tulnp | grep -i 2049
+ss -tulnp | grep -i 2049
+
+6- Add teh entery in export file to shareing dir.
+ vi /etc/exports : add the share dir path.
+ <pathnof share dir> *(sync)
+ Example: /opt/nfs-server *(sync)
+7- Reload the changes in RAM
+ exportfs -rv : after this cmd it is in RAM and NFS file system take this.
+ export -v #optional to check the setting.
+ 
+ ##### (STOP FIREWALL)
+  firewall-cmd --state
+  systemctl stop firewalld : this stop the running 
+ 
+ 
+ ```
+ 
+ ##### NFS_CLIENT
+ 
+ ```
+ 1- Create Client  as above Steps. (Chcek communicate with Server).
+ 2- Chcek it show Server share directores or not.
+  showmount -e server1 : server1 is the nbame of server. This cmd show error like 113 not route to host. Becaues firewall is open in Server.
+  Go to server and run follwing CMD
+  firewall-cmd --state
+  systemctl stop firewalld : this stop the running 
+ 3- Again check 
+  showmount -e server1: this will show bteh share dir name.
+ 4- Mount the server share dir with client dir.
+ mkdir /myshare : Make any directory
+ mout server:/opt/fileserver /myshare ; now we mount the server share 
+** /op/fileserver** with **myshare** at client side
+ 5- check mount using df -h
+ TO make the mount permnant
+ add in /etc/fstab
+ server1:/opt/fileserver /myshare nfs default 0 0 : save and exit and will have permanant mount fir share dir.
+ ```
+ 
+ 
+ 
+ 
+ 
+ 
+ 
