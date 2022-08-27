@@ -122,6 +122,75 @@ ss -tulnp | grep -i 2049
  ```
  
  
+ ###### FTP: Lecture : NFS-2 and FTP
+ How to run Yum in RHEL-6:
+ In RHEL-6 Repo is end of life. Yum repois discontinued.
+ 1- Mount the RHEL-6 CD --> go to package and install the pkg. Manul way.
+ 2- There is a workaround to run YUm from repo.
+  Use Centos-VAULT. By using Valut repo can run YUM.
+  Got to ```https://www.getpagespeed.com/server-setup/how-to-fix-yum-after-centos-6-went-eol``` 
+  
+  
+  
+  #### HOw t change the permison of NFS File system.
+  exportfs -v: This show the permisions.
+  vi /op/fileserver *(sync, rw): here we change read write permision. Previous it wa ro by default.
+  When we sent the data from client to server. NFS servcer first check the NFS persion then share file/folder persion.
+  Give the full persion
+  chmod 777 /opt/fileserver
+  
+  ###### IT Thechnologies we discuss above
+  Filse Server: In window
+  Linux: NFS/Samba
+  Benefit: Centrized storage for multiple clients.
+  
+  # FTP: File Tranfer Protocol
+  FTP -- TCP , work layer 4, (TCP, UDP works on layer 4)
+  
+ ANY application ask username/password --TCP.
+ NFS and Samba: File sharing Server. IF srver down file are not acsessable. Not downable.
+ FTP: Download data in local HHD of client.
+ IF run FTP name of App. and servers in FTP:
+ 
+ wuftpd
+ proftp
+ sftp: Secure FTP. This is mostly used in Bank industry.
+ vsftpd: Very secure FTP
+ 
+ 1- FTP run on 20/21 port
+ 2- 21 main port used for connection
+ 3- 20 used for data transfer.
+
+
+Package: ftp
+rpm -qa | grep -i ftp
+yum install vsftp-* -y ; Here -* mean any thing after vsftp like anyudate servion name.
+
+systemctl start vsftpd : Start
+systemctl enable vsftpd : enable while booting
+systemctl is-active vsftpd
+systemctl is-enabled vsftpd
+
+##### Check the port is open of NOt
+1- telnet 127.0.0.1 21
+2- nc 127.0.0.1 21
+3- ss -tulnp | grep -i 21
+4- netstat -tulnp | grep -i 21
+
+#### What is the default path of FTP
+/var/ftp/ : this is the main location which client access from  FTP server
+
+NOTE: Whole procedure looks like that.
+cient  pin the server IP. Server check FTP port is open or Not and then give teh access to th default path of FTP. All the files in th default path can be
+accessabe to the clients.
+
+#### How to use
+GO to the client Browser write
+ftp://server1 : Here server1 is our server name.
+ 
+ 
+ 
+ 
  
  
  
