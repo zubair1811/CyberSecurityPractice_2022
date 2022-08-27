@@ -164,7 +164,7 @@ ss -tulnp | grep -i 2049
 
 Package: ftp
 rpm -qa | grep -i ftp
-yum install vsftp-* -y ; Here -* mean any thing after vsftp like anyudate servion name.
+yum install vsftp-* -y ; Here -* mean any thing after vsftp like anyudate servion name. TO avoid packet conflect
 
 systemctl start vsftpd : Start
 systemctl enable vsftpd : enable while booting
@@ -186,9 +186,16 @@ accessabe to the clients.
 
 #### How to use
 GO to the client Browser write
-ftp://server1 : Here server1 is our server name.
- 
- 
+ftp://server1 : Here server1 is our server name. We can also used IP.
+
+
+##### Check Service detail
+RHEL-7
+sytemctl list-units
+systemct list-unit-files
+
+##### Basic Steps for Service checking
+
  
  
  
