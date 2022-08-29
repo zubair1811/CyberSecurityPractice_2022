@@ -195,8 +195,35 @@ sytemctl list-units
 systemct list-unit-files
 
 ##### Basic Steps for Service checking
-
+rpm -ql <Pkg name> : this show the all teh file which wher write by the pkg.
+rpm -qc <pkg name>: show the configuration files
+rpm -qd <pkg name>: Show the docuentaion of the pkg
+NOTE: Main is the binary file. 
+systectl/service <pkg name> start: this load the binary of that pkg into RAM. What we can load this binary without service cmd using following comds.
+ which <pkg>: this will sho th path where binary file is exist.
+ GO to that location and enter.
+ Example.
+ which vsftpd : it will show /usr/sbib/vsftpd just go that loaction and enter it will load that binary ito RAM.
+ ## How to remove the service from RAM. Get the pid and then kill it.
  
+ NOTE: Mostly we run using systemctl r service command. If it is not working than start directly. 
+
+# Types of FTP user.
+1- Anonymous --no identification
+2-locak user -- normal user /etc/passwd
+3-virtual user -- not in /etc/passwd
+
+By default FTP has anonymous user , no username and passwd. Not secure.
+
+#### HOw to disable Anonymous
+ 1- Change in Binaary source code--- Customize changes at compile time.
+ 2-Config change. (Each programm has Config file that change parameters at runing time)
+
+ Example:
+ etc/vsftpd/vsftpd.conf : this is the config file for vsftpd service
+ NO the anonymous tag: it wil ask the username and password now.
+ ##### NOTE: WE working with config file must take backup. If we change any config file restart the service must.
+ service <service name> restart
  
  
  
