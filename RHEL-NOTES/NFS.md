@@ -224,6 +224,21 @@ By default FTP has anonymous user , no username and passwd. Not secure.
  NO the anonymous tag: it wil ask the username and password now.
  ##### NOTE: WE working with config file must take backup. If we change any config file restart the service must.
  service <service name> restart
+ NOTE If not working check firewall at server and turn off it. In company mostly we do not used restart/start service commd it destory the previous poging working. Therefore, we use ```service reload <service name>```
+ 
+ Now when we access server from client it will asked for user name and password. We can login using any local user/passord in server sider users. 
+ 
+ ######## FTP pkg in cient for cmd line access. 
+ ftp <server1: server name>: this will ask user and password any user fin server side to login
+ help cmd show the all cmds for ftp pkg. 
+ NOTE: IT will not work check selinux
+ ``` sestatus ``` then turn off the service ``` setenforce 0 ```
+Challenge: There is security risk in VSFTPD as when use access it show the root access as well as data if the root dir so the user can download teh whole root dir. TO limit this we do changes in config file of vsftpd where ``` chroot_local_user `` tag . this limit the root and make the current share of the user as root. 
+ 
+ 
+ 
+ 
+ 
  
  
  
