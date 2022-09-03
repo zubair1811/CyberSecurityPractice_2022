@@ -224,7 +224,8 @@ By default FTP has anonymous user , no username and passwd. Not secure.
  NO the anonymous tag: it wil ask the username and password now.
  ##### NOTE: WE working with config file must take backup. If we change any config file restart the service must.
  service <service name> restart
- NOTE If not working check firewall at server and turn off it. In company mostly we do not used restart/start service commd it destory the previous poging working. Therefore, we use ```service reload <service name>```
+ 
+ NOTE If not working check firewall at server and turn off it. In company mostly we do not used restart/start service commd it destory the previous poging working. Therefore, we use ```service reload <service name>``` reload send ``` kill -l <pid> ``` ``` kill -HUP <ipd> ``` signals 
  
  Now when we access server from client it will asked for user name and password. We can login using any local user/passord in server sider users. 
  
@@ -236,7 +237,51 @@ By default FTP has anonymous user , no username and passwd. Not secure.
 Challenge: There is security risk in VSFTPD as when use access it show the root access as well as data if the root dir so the user can download teh whole root dir. TO limit this we do changes in config file of vsftpd where ``` chroot_local_user `` tag . this limit the root and make the current share of the user as root. 
  
  
+ #### HOW WE USE FTP IN COMPANY:
+ 1- we create different directors for different user. The data will we in different HDD
+ fdisk --- 15GB partition -- mount /data
+ df -h /data -- 15GB
  
+ 2- ADD user
+ 
+ useradd -d /data/ftpuser1 -s /sbin/nologin ftpuser1 : here we create user and rstric the user not to use shh jus use ftp
+ 
+ 3- the give the user name/password to user for login.
+
+ TO limit the user not to access the FTP add user name in /eyc/vsftpd/ftpusers
+ 
+ ####### INTERVIEW: FTP --- Active ftp vs Passive ftp
+ 
+ ACTIVE FTP:
+ Connection : 21 port
+ Data transfer: 20 port
+ 
+ PASSIVE FTP:
+ Connection: 21 port
+ Data Transfer ; Heiger port then 1024 port
+ 
+ SEcurity Questions:
+ Seperate dir
+ Seperate users with out shh access
+ bandwidth throtitling
+ 
+ ### ApacheServer
+ yum install httpd.* -y
+ 
+ Deveoper create website, Admin host website called web hoster.
+ 
+ TASK: ApacheWeb hosting.
+ 1- Create web page
+ 2- locate webpage -- document root path
+ 3- host website with path in http.conf file 
+ 4- Map website name with ip /etc/hosts
+ 
+ Solutin:
+ touch index.html
+ mv index.html /var/www/html
+ 
+ /etc/httpd/ : All apache related config files are in this location.
+ /etc/httpd/conf/: main config
  
  
  
