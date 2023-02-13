@@ -103,7 +103,57 @@ seq -s - 10 : -s flag add the symbol between sequence
 seq -s + 10 | bc : it add the + b/w sequence and then apply calculator (bc).
 ```
 
+# Lecture-5
+``` echo $? ``` is used to the commnad satatus. if it return 0 its mean commnad run succusful if return any other number than wrong commnad
+0 mean True
+1 mean False
+[ "abc" == "abc" ]; echo $? : it will return 0
+[ "abc" != "abc" ]; echo $? : it will return 1
+[ 10 -gt 10 ]; echo $? here -gt mean greater than
+[ 10 -ge 10 ]; echo $? here -ge mean greater and equal
+[ 10 -lt 10 ]; echo $? here -lt mean less then
+[ 10 -le 10 ]; echo $? here -le mean less and equal
 
+#### if condition in bash scripr 
+ 
+```
+if [[ statement ]]
+then
+     (display output)
+else
+     (display output )
+fi : this compulseroy for if statement     
+##### semmilarly if else nested
+if [[ staement ]]
+then
+    (dispaly output)
+elif [[ statement ]]
+then 
+     (display)
+else 
+    (display)
+fi
+```
+###### Example 
+```
+echo -n "Number a"
+read a
+echo -n "Number b"
+read b
+echo -n "Number b"
+read b
+if [[ $a -ge $b ]] && [[ $a -ge $c]]
+then
+      echo "a is big"
+ elif [[ $b -ge $a ]] && [[ $b -ge $c]]
+ then
+      echo "b is big"
+ else 
+      echo "c is big"
+      
+ fi
+
+```
 
 
 
