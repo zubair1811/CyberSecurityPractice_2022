@@ -155,9 +155,17 @@ then
 
 ```
 
+# Lecture-6
+bash if else examples with system commands palying.
 
+### TASKS
+```
+1- Check the service installed using which command and echo $? : if show 0 then serice installed 
+2- check the serice installed using ps -ef | grep <service name> | wc -l : if number gearter than 1 then serive installed 
 
+```
 
+# Lecture-7
 
 
 
