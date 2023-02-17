@@ -167,6 +167,8 @@ bash if else examples with system commands palying.
 
 # Lecture-7
 
+# Lecture 11
+while loop
 
 
 
