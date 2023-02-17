@@ -169,6 +169,65 @@ bash if else examples with system commands palying.
 
 # Lecture 11
 while loop
+```
+while <comdition>
+do
+   <dispaly reslt>
+done
+
+```
 
 
+# INTERVIEW: 
+### How to read file from bash script.
 
+```
+file = "<file name we want to exess>"
+while read <variable>
+do 
+    <dispay result>
+done < $file
+```
+there is another syntx to do the same
+```
+file = "<file name we want to exess>"
+cat $file | while read <variable>
+do 
+    <dispay result>
+done
+```
+similary we can use other command
+```
+command | while read <variable>
+do 
+    statement
+done
+
+##### Example
+ls -ltrh | while read each_line
+do 
+    echo "$each_line"
+done
+```
+### HOw to seperate teh ips from a CV file using bash script.
+ while loop wit IFS
+ IFS: Internal field seperator
+ ```
+ while IFS="," read <variables>
+ do
+     statements
+ done <$file
+
+#### Example:
+file="/root/zubair/bashscript/11_lect.csv"
+while IFS="," read var1 var2 var3 : here "," indiicates that there are comma seperator in data
+do
+    echo"$var3"
+done < $file
+### NOTE: if there are wide spaces seperator are used then no need to use IFS
+file="/root/zubair/bashscript/11_lect.csv"
+while read var1 var2 var3 
+do
+    echo"$var3"
+done < $file
+```
