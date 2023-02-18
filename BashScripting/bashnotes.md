@@ -167,6 +167,31 @@ bash if else examples with system commands palying.
 
 # Lecture-7
 
+Nested if else
+if -- has then and fi
+else --- has no then and no fi
+elif -- has then but no fi
+
+Learn Exaples of nested if else
+
+# Lecture-8
+Postional parameters 
+$0 ---> programm or script
+$1 .. 9 parameters passed
+$# --> Count the total parameters
+$* --> Display the prameters passed
+$@ --> similar to $* but used to fetech the arguments when double qoutes are used
+$$ ---> Provide the current PID of the shell
+$? --> Status of the last command 0 mean sucess 
+
+#### TSAK: Check the service status using positionla parameters 
+1- using Simple read command variables
+2 - Using positional parameters concept and limit to positional paramters using if
+
+# Lecture-9
+
+# Lecrure-10
+
 # Lecture 11
 while loop
 ```
