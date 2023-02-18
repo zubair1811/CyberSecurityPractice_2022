@@ -189,10 +189,75 @@ $? --> Status of the last command 0 mean sucess
 2 - Using positional parameters concept and limit to positional paramters using if
 
 # Lecture-9
+Loop: In programming langauge any repreated task task more than one.
+A loop is sequence of instruction that is continoully repreated until certain condition reached.
+Types of Loop
+1-For loop
+2-While loop
+3- Until loop
+4- selected case loop
+
+```
+For variable <condition or fange>
+do
+    statement
+done
+```
+
 
 # Lecrure-10
+Details and practie on For loop
+#### INtervivew: How to crete a 10 files with one command
+touch file{1..10}
+```
+for i an {1..10..2}  2 is the deley incrment 
+do
+   echo "$i"
+done
+C lanagueg syntx can also be used
+
+for (i=1; i<=10; i++)
+do
+   echo" $i"
+done
+```
+
+-x : is used to check the executabe premisiion 
+```
+if [[-x simple.sh]] 
+then
+    echo" it has premision"
+else
+    echo "not"
+if
+
+for each in $(ls)
+do 
+      if [[-x $each]] 
+      then
+           echo" it has premision"
+       else
+            echo "not"
+        if
+done
+```
+#### -f is used to check the file or not
+```
+for each in $(ls)
+do 
+      if [[-f $each]] 
+      then
+           echo" it is a txt file"
+       else
+            echo "It is a dir"
+        if
+done
+```
+    
+
 
 # Lecture 11
+Infinity loop; there are no limit in yuor condition its called infinity
 while loop
 ```
 while <comdition>
@@ -249,10 +314,39 @@ while IFS="," read var1 var2 var3 : here "," indiicates that there are comma sep
 do
     echo"$var3"
 done < $file
-### NOTE: if there are wide spaces seperator are used then no need to use IFS
+### NOTE: if there are wide spaces seperator are used then no need to use IFS: Bydefault it use space.
 file="/root/zubair/bashscript/11_lect.csv"
 while read var1 var2 var3 
 do
     echo"$var3"
 done < $file
 ```
+
+# Lecture-12
+ ### Difference b.w while and until loop
+ while loop are desing to run a condition is staisfied and terminated once that condition returns false.
+ until loop are designed to run while the condition return false and olny terminated when condtion return True.
+ unitl --> falise to true
+ while --> True to False
+ ```
+ unitl <condition>
+ do
+    statement
+done
+ ```
+ #### Example:
+ start=1
+ until [[ $start -ge 5 ]]
+ do 
+     echo "Number is: $start"
+     ((start++))  : This can be written as ```start=`expr $start + 1` ```
+ done
+ 
+ ###### Note
+ -e flag is use to check the existance of file. -e is adance level of echo
+ until [[ -e /temp/sample.txt]]
+ do 
+       echo -e " File is nor exit"
+done
+echo "File in not exit"
+
