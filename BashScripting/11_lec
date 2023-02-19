@@ -1,0 +1,16 @@
+#!/bin/bash 
+
+# while loop
+#start=10
+#while [[ $start -ge 1 ]]
+#do
+#	echo "Alnafi $start"
+#	((start--))
+#done
+
+# Second task read file using bash
+file="testlect11.txt"
+while read line_wis
+do
+	echo "$line_wis"
+done < $file

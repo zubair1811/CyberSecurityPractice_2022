@@ -1,0 +1,81 @@
+#!/bin/bash
+
+
+################### Simple code to check number entered 
+#echo " Please enter a number from1 to 3"
+#read num
+
+#case $num in
+#	1)
+#		echo "You have enter one number"
+#	;;
+#	2)
+#		echo "you have entered two number"
+#	;;
+#	3)
+#		echo "Yu have entered thrid number"
+#	;;
+#	*)
+#		echo "You have entered invalid number"
+#esac
+
+######## Chec the file extensions
+
+#echo " Please enter file extension"
+#read ext
+
+#case $ext in
+#        ".txt")
+#                echo "You have enter .txt extension"
+#		ls -ltrh *.txt
+#        ;;
+#        ".sh")
+#                echo "you have entered .sh extension"
+#		ls -ltrh *.sh
+#        ;;
+#        *)
+#                echo "Yu have entered Invalid extension"
+#esac
+
+
+################ Task: to check the system details using select loop
+
+echo "\n======= Please Select the Options ========\n"
+echo -e "\n1. Operating System details\n"
+echo -e "\n2. Hostname\n"
+echo -e "\n3. Memory Details\n"
+echo -e "\n4. Disk Details\n"
+echo -e "\n5. Network IP details\n"
+echo -e "\n6. Last Logged User\n"
+echo -e "\n7. Processs Usage\n"
+echo -e "\n8. Exit\n"
+echo "Please Enter the option"
+read opt
+
+case $opt in
+	1)
+		echo "OS details is $(uname -a)"
+	;;
+	2)
+		echo "Hostnae is $(hostname)"
+
+        ;;
+        3)
+                echo "Free Meory is: $(free -g)"
+        ;;
+        4)
+                echo "Disk Detail is $(df -h)"
+        ;;
+        5)
+                echo "Network Detils  is $(ifconfig)"
+        ;;
+        6)
+                echo "LAST LOggin is "
+        ;;
+        7)
+                echo "Process details is $(ps -el)"
+        ;;
+        8)
+                echo "By By"
+		exit 1
+esac
