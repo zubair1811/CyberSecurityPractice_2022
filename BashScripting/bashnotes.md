@@ -350,3 +350,76 @@ done
 done
 echo "File in not exit"
 
+# Lecture -13 (Select Loop)
+Seect Loop: used for manu driven program
+case <variabe> in
+         pattern) 
+                 staement
+         ;;
+         pattern) : This is your logic yu want to serach
+                 staement
+         ;;      : For move next
+         *)     :This is fo false statement
+                 staement
+         ;;
+ esac
+ 
+ ##### Example
+ ```
+ echo " plesae enter the number b/w 1 to 3"
+ read num
+ 
+ case $num in
+           1)
+                 echo "Yiu have enter the one number"
+            ;;
+            2)
+                 echo "Yiu have enter the one number"
+            ;;
+            3)
+                 echo "Yiu have enter the one number"
+            ;;
+            *)
+                 echo "Yiu have enter the one number"
+            ;;
+esac
+ ```
+ 
+  ```
+ echo " plesae enter yu file extension"
+ read ext
+ 
+ case $ext in
+           ".txt")
+                 ls -ltrh *.txt
+            ;;
+            ".sh")
+                 ls -ltrh *.sh
+            ;;
+            *)
+                 echo " sorryy, yiu have ener the invalid extension"
+            ;;
+esac
+ ```
+ 
+echo -e "\n1. Operating syste information" ; here -e is used fr new line. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+### TASK: 
+1- MAke a code fo file search via extention using select loop.
+2- Make a manu script with below details using select case.   
+ 1. OS details
+ 2. Hostname
+ 3. Memory
+ 4. Disk DEtai
+ 5. Network IP details
+ 6. Last Logged User
+ 7. Process Usage
+
+
