@@ -404,13 +404,6 @@ esac
  
 echo -e "\n1. Operating syste information" ; here -e is used fr new line. 
  
- 
- 
- 
- 
- 
- 
- 
 ### TASK: 
 1- MAke a code fo file search via extention using select loop.
 2- Make a manu script with below details using select case.   
@@ -422,4 +415,65 @@ echo -e "\n1. Operating syste information" ; here -e is used fr new line.
  6. Last Logged User
  7. Process Usage
 
-
+ # Lecture-14
+-e option used to interpretation of blacslash.
+ and \ with special character can aso be used
+ 
+ age=28
+ echo -e " My age is \$age $age" :--- age 28
+ 
+ \a: 
+ \b: 
+ \c:
+ 
+ 
+ #### Redirections
+ 
+ vim HS.sh
+ ``` 
+ ##### NOTE: This is used to display multi libes without echo
+ #!/bin/bash
+ cat<< ABD
+ MY current user is $USER
+ MY current directory is $PWD
+ ABD
+ ````
+ 
+ ./HS.sh >> file1.txt : redierct the data to file 1
+ ##### This can also be done within command
+ ```
+  #!/bin/bash
+ cat<< ABD >file2.txt
+ MY current user is $USER
+ MY current directory is $PWD
+ ABD
+ 
+ ##### tr flags
+ echo "we can learning bash" | tr[a-z][A-Z] : change small to capital letters
+ tr[a-z][A-Z]<<<"we are learing bash" : if cat is not used then use three <<<<
+ abd="we are earning bash"
+                                                                                 
+                                                                                 
+                                                                 
+                        
+                                                                                 
+ 
+ #### Comments
+ ##### single lien
+ # is used
+ 
+ ##### Multi line
+```
+ << ABD
+ hdkshkdh
+ dsjdsj
+ ABD
+ ```
+ 
+ ```
+ : "                <>sngle qoute can also be used
+ hhsahdk
+ shhhksad
+ shdkhsdk
+ "
+ 
