@@ -478,4 +478,168 @@ echo -e "\n1. Operating syste information" ; here -e is used fr new line.
  shhhksad
  shdkhsdk
  "
+ ```
+ 
+ # lecture-15
+ #### position parameters with shift commmad
+ 
+ ####### single shift postion
+ vim shift.sh
+ ```
+ #!/bin/bash
+ echo "count $#"
+ echo "$1 $2 $3"
+ shift 
+ echo "$1 $2 $3"
+ echo "count $#"
+ ```
+ 
+ #### output
+ ```
+./shift.sh abd zub ism
+count 3
+abd zub ism
+zub ism
+count  2
+ ```
+ 
+ ####### muti shift position
+ vim shift.sh
+ ```
+ #!/bin/bash
+ echo "count $#"
+ echo "$1 $2 $3"
+ shift 1 :bydefault shift is a shift 1
+ echo "$1 $2 $3"
+ echo "count $#"
+ shift 2 : it miss two parameters
+ echo "$1 $2 $3"
+ echo "count $#"
+ ```
+ 
+ #### output
+ ```
+./shift.sh abd zub ism
+count 3
+abd zub ism
+zub ism
+count  2
+ ism
+count  1
+ ```
+ 
+ ###### Difference b/w $# and #*
+ $#: show the parmaters with double qotes
+ $*: Display the entered parameters
+ 
+ 
+ ```
+ vim post.sh
+echo "example of : \$@"
+ for $each in "$@"  : this will show variable with double qoutes
+ do 
+    echo $each
+ done
+ 
+ echo "example of : \$*"
+ for $each in $* : this will show all entered values
+ do 
+    echo $each
+ done
+ 
+ ```
+ ###### output
+ ./post.sh muhmd zub ism "1 2" "3 4 5"
+ 
+ example of : $@
+ muhmd 
+ zub 
+ ism 
+ 1 2 
+ 3 4 5
+ 
+ Example of $*
+ muhmd 
+ zub 
+ ism 
+ 1 
+ 2 
+ 3 
+ 4 
+ 5
+ 
+ # Lecture-16
+ #### Break and continue statements
+ 
+ Break: It is use for exit the loop
+ continue: It is use skip the current current then continue next.
+ 
+ ```
+ echo "start the loop"
+ fr i in $(seq 1 10)
+ do
+   if [[ i -eq 5]]
+    then  
+         break
+    fi
+   echo $i
+ done
+ echo "Ending the loop"
+ 
+ ```
+ output
+ ```
+ 1
+ 2
+ 3
+ 4
+ 
+ ```
+ #### continue
+  ```
+ echo "start the loop"
+ fr i in $(seq 1 10)
+ do
+   if [[ i -eq 5]]
+    then  
+         continue
+    fi
+   echo $i
+ done
+ echo "Ending the loop"
+ 
+ ```
+ output
+ ```
+ 1
+ 2
+ 3
+ 4
+ 6
+ 7
+ 8
+ 9
+ 10
+ just miss the 5 and continue.
+ 
+ ```
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
