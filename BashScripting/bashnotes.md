@@ -421,10 +421,14 @@ echo -e "\n1. Operating syste information" ; here -e is used fr new line.
  
  age=28
  echo -e " My age is \$age $age" :--- age 28
- 
- \a: 
- \b: 
- \c:
+ \: backslash
+ \a: Alert (BELL)
+ \b: backspace
+ \c:suppress trailing newline
+ \f:from feed in short clear yur screen
+ \n: new line
+ \t: horizontal tab
+ \v:vertical tab
  
  
  #### Redirections
@@ -449,15 +453,13 @@ echo -e "\n1. Operating syste information" ; here -e is used fr new line.
  ABD
  
  ##### tr flags
- echo "we can learning bash" | tr[a-z][A-Z] : change small to capital letters
- tr[a-z][A-Z]<<<"we are learing bash" : if cat is not used then use three <<<<
+ echo "we can learning bash" | tr [a-z] [A-Z] : change small to capital letters
+ tr [a-z] [A-Z]<<<"we are learing bash" : if cat is not used then use three <<<<
  abd="we are earning bash"
+ echo $abd
+ tr[a-z][A-Z] <<< $abd
+ doceket -v |tr [a-z][A-Z]
                                                                                  
-                                                                                 
-                                                                 
-                        
-                                                                                 
- 
  #### Comments
  ##### single lien
  # is used
@@ -471,7 +473,7 @@ echo -e "\n1. Operating syste information" ; here -e is used fr new line.
  ```
  
  ```
- : "                <>sngle qoute can also be used
+ : "                <single qoute can also be used>
  hhsahdk
  shhhksad
  shdkhsdk
