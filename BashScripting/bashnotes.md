@@ -627,8 +627,19 @@ echo "example of : \$@"
  
  
  
+ # Lecture -18 (String operations) 
  
  
+##### Replace
+ 
+ 
+ ###### Remove
+ 
+ 
+ #### Upper and lower case 
+ 
+ 
+ #### slicing 
  
  
  
