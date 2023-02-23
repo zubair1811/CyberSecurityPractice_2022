@@ -567,15 +567,14 @@ echo "example of : \$@"
  3 
  4 
  5
+ ```
  
  # Lecture-16
  #### Break and continue statements
  
  Break: It is use for exit the loop
  continue: It is use skip the current current then continue next.
- 
- ```
- echo "start the loop"
+ ``` echo "start the loop"
  fr i in $(seq 1 10)
  do
    if [[ i -eq 5]]
@@ -585,18 +584,18 @@ echo "example of : \$@"
    echo $i
  done
  echo "Ending the loop"
+ ```
  
- ```
  output
- ```
- 1
+ ```1
  2
  3
  4
+ ```
+ 
+ #### continue
  
  ```
- #### continue
-  ```
  echo "start the loop"
  fr i in $(seq 1 10)
  do
@@ -607,9 +606,9 @@ echo "example of : \$@"
    echo $i
  done
  echo "Ending the loop"
- 
  ```
  output
+ 
  ```
  1
  2
@@ -621,11 +620,10 @@ echo "example of : \$@"
  9
  10
  just miss the 5 and continue.
- 
  ```
  
- 
- 
+ # Lecture-17  (Practice Phase)
+ please check the ![Shellscripting_Practice_Task.pdf](Shellscripting_Practice_Task.pdf)
  
  
  
