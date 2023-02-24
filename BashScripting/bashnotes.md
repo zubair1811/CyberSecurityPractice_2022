@@ -629,22 +629,66 @@ echo "example of : \$@"
  
  # Lecture -18 (String operations) 
  
+ ```
+ name=muhammad zubair islam
+ echo "${name}"
+ ```
+ 
+ ##### Total characters 
+ 
+ ```echo "${#name}" : use # to count```
+ 
+ #### concatination
+ ```fname= zubair
+ lname=islam
+ fullname=$fname$lname
+echo "${fullname^^}" ```
+ 
+ ###### Lower and upper case
+ ``` echo "${fullname^^}" : upper case
+     echo "${fullname}" | tr [a-z] [A-Z] 
+ 
+ echo "${fullname,,}" : lower case
+ echo "${fullname}" | tr [A-Z] [a-z] 
+ ```
  
 ##### Replace
- 
+ ```echo "${fullname/muhammad/MUHAMMAD}```
  
  ###### Remove
- 
- 
- #### Upper and lower case 
+```echo "${fullname/muhammad}```
  
  
  #### slicing 
+ ```
+ echo "${fullname:0:2} : display from index 0 to 2
+ echo "${fullname::} : display all
+ echo "${fullname::-1} : display from last
+ 
+ ```
+ 
+ # Lecture-19 Array
+ empty array can also be made.
+ 
+ #### Array initilizationn 
+ 
+ #### alll didpaly
+ 
+ ###### slicing
+ 
+ ###### Indexing
+ 
+ #### arry from user define "read"
+ use -a flag
  
  
+ ##### key and value
  
  
- 
+ #### string in a Array
+ ```
+ declear -A <name of the array>
+ ```
  
  
  
