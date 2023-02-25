@@ -668,30 +668,73 @@ echo "${fullname^^}" ```
  ```
  
  # Lecture-19 Array
- empty array can also be made.
+ An arry is a collection of elements
+ Empty array can also be made.
  
  #### Array initilizationn 
+ ```
+ abd=(1 2 3 zubair)
+ echo "${abd[*]}"
+ ```
  
  #### alll didpaly
  
+ ```
+ echo "${abd[*]}" : here * or @ is used to display all elemnts
+  echo "${abd[@]}"
+ ```
+ 
  ###### slicing
+  echo "${abd[0]}" : show 0 index element
+ echo "${abd[*]:1:3}" : show 1 index to 3 index elements
  
  ###### Indexing
+ ```
+ echo "${!abd[*]}" : show the all index
+ echo "${#abd[*]}" : count the otal elemnts in a array 
+ 
+  ##### store command in the array
+ cmd =($(docker -v))
+ echo "${cmd[*]}"
+ ```
  
  #### arry from user define "read"
  use -a flag
  
+ ```
+ read -a test
+ muhammad zubair islam
+  echo "${test[0]}" : muhammad
+  echo "${test[1]}"  : zubair
+  echo "${test[2]}" : islam
+ ```
+ 
  
  ##### key and value
  
+ ```
+ syntax
+<variable>=([key]=value [key]=value [key]=value)
+
+ Example:
+ test=([2]=4 [6]=10 [30]=8)
+ echo "$[!test[*]]" : 2 6 8 show the key value
+ echo "$[test[2]]" : 4, show the key 2 value which is 4.
+  echo "$[#test[*]]"  : show the total count 3
  
- #### string in a Array
+ ```
+ 
+ #### string in a Array as key value 
  ```
  declear -A <name of the array>
+ It is used to consider string while simple with out declear struing is niot used as akey value
+ declear -A test
+ test=([fnmae]=zubair [lname]=islam [age]=28)
+ echo "$[!test[*]]" : fname lname age show the key value
+ echo "$[test[fname]]" : zubair
  ```
  
- 
- 
+
  
  
  
