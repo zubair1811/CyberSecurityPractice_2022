@@ -36,7 +36,47 @@ ls >> test.txt : Here >> is used to append the data at the end of the existing d
   /home
   /usr/
   /root
+  ```
+  #### Lecture-5 (Intruction to file systems)
+  
+  
+  #### Lecture-6 (Working with files and Directories)  
+  ls -lhr : ls is list, l deatil, h human readable, r reverse order.
+  whoami: this cmd show what user are we using
+  cp: copy the data
   
   ```
+  example:
+  cp file.txt /Download
+  
+  ```
+  
+  mv: move file or remain the file
+  mv <old file name> <new file name> : here the file nam ewill be changed
+  mv
+  
+  relative nad absolute file.
+  
+  ###### archieving the data
+  tar -cf filename.tar ~/Documents
+  tar -cf filename.tar.gz ~/Documents
+  tar -czvf filename.tar.gz ~/Documents
+  
+  tar -xvf filename.tar
+  tar -xzvf filename.tar.gz
+  
+  
+  zip -r filename.zip
+  unzip filename.zip
+  
+  ###### while cards
+  rm filename?.txt
+  rm *filename.txt
+  
+  tar -
+  
+  
+  
+  
   
   
