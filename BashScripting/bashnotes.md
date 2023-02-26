@@ -764,9 +764,58 @@ echo "${fullname^^}" ```
  #### argument passing using position variable concept.
  
  
+ # lECTURE-21 (GREP COMMANDS AND ITS FLAGs)
  
+  -i: ignore_case, select in any case line upper and lower
+  ```
+  cat abd.txt | grep -i zubair: it can aslo find Zubair
+  ```
+  -w= match case only
+  -v: invert the matching
+  ```
+  cat abd.txt | grep -v "#" :this will selct the all code which is not comment
+  ```
+  -o:only watching in new line
+  -c: count the matching from whole dataqq  
+  -A : after matching show line
+  
+  ```
+  abd.txt | grep -A "zubair" :show the after line matchin zubair
+   abd.txt | grep -B "zubair" :show the before line matchin zubair
+   abd.txt | grep -A "zubair" :show the before and after line matchin zubair
+  ```
+  -r: show where the following thing are used
+  grep -r "Devops" : find where and which file used Devops
+  grep -l "Devops" * : find exect matching and list file
+  -h: hide the file only show content
+  -e: how multiple matching (all are same)
+  abd.txt | grep -e "zubair" -e "learning -e "trainer"
+  abd.txt | grep -E   "zubair" | "learning | "trainer"
+ abd.txt | grep -egrep   "zubair" | "learning | "trainer" 
  
-
+  
+  abd.txt | grep -Ew  "zubair" | "learning | "trainer" : new line
+  
+  we can also serach using define pattern innfile
+  
+  add.txt : this contain 
+  root
+  zubai
+  admin
+  lab
+  
+  ```
+  cat /etc/passwd | grep -f add.txt    : -f mean file
+  cat /etc/passwd | grep -wf add.txt : whith new line 
+  ```
+  ^<something>: this is used to find the content at start
+  
+  ```
+  cat /etc/passwd | grep | -v "^#" : here meaning that  shwo the content which is not start with #.
+  ```
+##### INTRVIEW:
+  1-Find directory in current directory
+  2- Find files in current directory
  
  
  
