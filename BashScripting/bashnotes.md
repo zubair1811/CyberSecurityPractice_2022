@@ -780,9 +780,9 @@ echo "${fullname^^}" ```
   -A : after matching show line
   
   ```
-  abd.txt | grep -A "zubair" :show the after line matchin zubair
-   abd.txt | grep -B "zubair" :show the before line matchin zubair
-   abd.txt | grep -A "zubair" :show the before and after line matchin zubair
+  abd.txt | grep -A -1 "zubair" :show the after line matchin zubair
+   abd.txt | grep -B -1 "zubair" :show the before line matchin zubair
+   abd.txt | grep -C -1 "zubair" :show the before and after line matchin zubair
   ```
   -r: show where the following thing are used
   grep -r "Devops" : find where and which file used Devops
