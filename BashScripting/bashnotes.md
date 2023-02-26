@@ -734,6 +734,38 @@ echo "${fullname^^}" ```
  echo "$[test[fname]]" : zubair
  ```
  
+ # Lecture-20 (Functions)
+ ##### function: function is a bock on code which reduce the unwanted line inyour script. and help in organizing long script intpmanagable module
+ There are two types of function define
+ 1- method
+ 
+ function <function name> ()
+ {
+     sattement
+ }
+ 
+ 2- method
+ <function name> ()
+  {
+      satement
+  }
+ ```
+ ```
+ #### Vaibale in a function
+  1-Global
+  2-local
+ if we write local with avariable its scope within function only and global can be access anywhere.
+ 
+ 
+ ### return
+ return will not show output but exit status command ``` echo $? ``` will show the return value. It will not work with string value.
+ 
+ 
+ #### argument passing using position variable concept.
+ 
+ 
+ 
+ 
 
  
  
