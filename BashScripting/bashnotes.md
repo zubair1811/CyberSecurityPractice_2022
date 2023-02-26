@@ -784,15 +784,17 @@ echo "${fullname^^}" ```
    abd.txt | grep -B -1 "zubair" :show the before line matchin zubair
    abd.txt | grep -C -1 "zubair" :show the before and after line matchin zubair
   ```
+  
+  ```
   -r: show where the following thing are used
   grep -r "Devops" : find where and which file used Devops
   grep -l "Devops" * : find exect matching and list file
   -h: hide the file only show content
   -e: how multiple matching (all are same)
   abd.txt | grep -e "zubair" -e "learning -e "trainer"
-  abd.txt | grep -E   "zubair" | "learning | "trainer"
- abd.txt | grep -egrep   "zubair" | "learning | "trainer" 
- 
+  abd.txt | grep -E   "zubair|learning | trainer"
+ abd.txt | grep -egrep   "zubair |learning | trainer" 
+ ```
   
   abd.txt | grep -Ew  "zubair" | "learning | "trainer" : new line
   
