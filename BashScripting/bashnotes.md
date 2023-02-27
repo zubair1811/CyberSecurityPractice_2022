@@ -820,5 +820,27 @@ echo "${fullname^^}" ```
   2- Find files in current directory
  
  
+ $: match the content
+ cat abd.txt | greb -E "cource.$" :find line with cours.
  
- 
+^$: empty lines
+  
+  . : show all special characters
+  \b : to display only match string
+  
+  i :check optional cndition
+  
+  {N} will display N times
+  
+  ##### TASK:
+  cat urls.txt :create thus
+  we have some url example so please find deow for grep command.
+  please cjcek and let me know if yu are solving.
+  
+  http://google.com
+  https://google.com
+  ftp://mywebserver.net
+  ftp.//myweb.edu
+  
+  
+  
