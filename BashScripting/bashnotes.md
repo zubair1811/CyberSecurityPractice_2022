@@ -832,7 +832,7 @@ echo "${fullname^^}" ```
   
   {N} will display N times
   
-  ##### TASK:
+  ##### TASK: INTERVIEW
   cat urls.txt :create thus
   we have some url example so please find deow for grep command.
   please cjcek and let me know if yu are solving.
@@ -842,5 +842,7 @@ echo "${fullname^^}" ```
   ftp://mywebserver.net
   ftp.//myweb.edu
   
-  
+  ```
+  cat urls.txt | grep -E "^(http|https|ftp):[\/]{2}([a-zA-Z0-9\-\.]\.[a-zA-Z]{2,4})"
+  ```
   
