@@ -842,7 +842,123 @@ echo "${fullname^^}" ```
   ftp://mywebserver.net
   ftp.//myweb.edu
   
+  # Lecture-22
   ```
   cat urls.txt | grep -E "^(http|https|ftp):[\/]{2}([a-zA-Z0-9\-\.]\.[a-zA-Z]{2,4})"
   ```
+  
+  ###### cut command
+  file | cut <options>
+  cut <option> file name
+  
+  ```
+  data.txt | cut -c 2 : show first two character from each line
+  
+  docker -c | cut -c 16-23 : this will cut from 16 to 23
+  
+  data.txt | cut -f 1 : it select the column which has tap space
+  ```
+  
+  delimeter : if there is no tap sapce then use delimeter with defined character
+  -d " ": space sepectrator
+  -d "," : colon sepecrator
+ 
+  ```
+   cat /etc/passwd | cut -d ":" -f 1-10 | grep lab1
+  ```
+  
+  outputdelimeter : replace the exisiting delimeter feild with your define
+  
+  ```
+  cat /etc/passwd | cut -d ":" -f 1-10 --output-delimiter="-->" | grep lab1
+  ```
+  
+--compliment: it will not show the mentioned feild
+    
+  ```
+  cat /etc/passwd | cut --complement -d ":" -f 1 | grep lab1  will not show first feild
+  ```
+  
+  #TASK: find ips
+  
+  ```cat ips.txt
+  apache,192.168.1.12
+  sftp,192.168.1.3
+  nginx,192.168.1.5
+  
+  ###### all ips
+  cat ips.txt | cud -d "," -f 2
+  ####### just apacje ip
+  cat ips.txt | grep -i "apache"| cud -d "," -f -2 
+  ```
+  
+  
+ #Lecture-23
+ AWK is used for data manipulation, searching, task run, action, data generating report.
+ 
+ AWK syntax:-
+ filename OR command | awk option 'pattern {}'
+ OR
+  awk option 'pattern {action}'
+  
+  AWK options:-
+  -F : Field Saparator
+  -f : Filename you need to specified
+  
+  AWK variables:-
+  1. $0, $1, $2, $3, $4 so on
+  2- NR --> number of records
+  3- NF --> number of field
+  4-FILE
+
+  
+  ```
+  cat userdata.txt | awk '{print $0}' : it show the all data
+  cat userdata.txt | awk '{print $1}' : it show the firt column data
+  cat userdata.txt | awk '{print $2}' : it show the second column data
+  cat userdata.txt | awk '{print $1,$2,$3}' : it show the frt three column data
+  cat userdata.txt | awk '{print NR}' : it show the row number on each data
+  cat userdata.txt | awk '{print NR "-->" $0}' :show the row number on all data and specerate with -->
+  cat userdata.txt | awk '{print NF}' :Total feild in each row
+  cat userdata.txt | awk '{print NR -->" $0 "-->" NF}' :Total feild in each row
+   cat userdata.txt | awk 'NR==1' :show the feild in the row
+   cat userdata.txt | awk 'NR==1 {print $2}' :show the feild in the row
+   cat /etc/passwd | awk -F ":" '{print $1}'
+  
+   cat userdata.txt | awk -F " " '/a/ {print $2}' :show the all column data which "a"
+  
+  #### Find the satatus of docker using awk, also find version number
+  systemctl status docker | awk 'NR==3 {print $2}'
+  ```
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
