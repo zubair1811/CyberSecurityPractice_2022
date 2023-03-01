@@ -893,7 +893,7 @@ echo "${fullname^^}" ```
   ```
   
   
- #Lecture-23
+ # Lecture-23
  AWK is used for data manipulation, searching, task run, action, data generating report.
  
  AWK syntax:-
@@ -931,21 +931,100 @@ echo "${fullname^^}" ```
   systemctl status docker | awk 'NR==3 {print $2}'
   ```
   
+  # Lecture-24
+  
+  Awk will use two type of your requirment
+  1. AWK command
+  2. AWK scripting languages
+  
+  AWK script syntax:-
+  filename | awk 'BEGIN {start_action} condition {action} END {stop_Action}'
+  filename | awk -f <filename.awk>
+  
+  ###### OFS: output feild seperator
+  ```
+  date | awk 'OFS="_" {print $2,$3,$4}' : OFS is used to define your own seperator
+  ```
+  
+ ##### AWK scripting
+  ```
+  awk 'BEGIN {print "Hey, I am and zubair islam"}' : simple method
+  
+  vim simple.awk
+  BEGIN {
+           print "Hy, I am zubair"  
+  }
+  
+  awk -f simple.awk
+  ./simple.awk : directly will not work
+  insert sbash line
+  #!/usr/bin/awk
+  ```
+  
+  ```
+  who | awk 'BEGIN {print "Active Session"} {print $1,$4}'
+  ```
+  
+  ##### Find tota uers and enlist then 
+  ```
+  cat /etc/passwd | awk -F ":" '$3>=1000 {print $1, $3,$6}' : userid greater then 1000
+  cat /etc/passwd | awk -F ":" '$3>=1000 {print $1, $3,$6}' | wc -l
+  cat /etc/passwd | awk -F ":" '$3>=1000 {print $1, $3,$6}' > user.txt
+  ```
   
   
+  ###### -v: Variables and -f files
   
+  ```
+  awk 'BEGIN {ali=100; print ali}' : in awk with quote variable can be used without $ to get value
+  ali=100
+  awk -v n=$ali'BEGIN {print n}' :  other case where varibale outside
+  ```
   
+  ##### serach specific data
+  ```
+  cat/etc/passwd | awk 'BEGIN {print "Begin block"} /alnafi/ {print $0} END {print "End block"}'
+  ```
   
+  ####### feild as a seperoator
+  ```
+  echo "muhammad zubair islam" | ak -F "zubair" '{print $1}' : show muhammad
+   echo "muhammad zubair islam" | ak -F "zubair" '{print $2}' : show islam, here zubair is bworking as a seperator
+  ```
   
+  ####### if condition
+  vim cat.txt
+  20
+  30
+  10
+  1
+  2
+  4
+  6
+  8
+  38
+  15
+  24
+  18
+  cat num.txt | awk '{if ($1>=30) print $1}'
+  cat num.txt | awk '{if ($1>=10 && $i<=30) print $1}'
+   
+  ###### For loop
+   
+  ```
+   cat num.txt | awk 'BEGIN {for (i=1; i<=10; i++) print "The number", i}'
+  ```
   
+  ### while loop
   
+  ```
+   cat num.txt | awk 'BEGIN {i=1; while(i<=10) {print "The number", i++}}'
+  ```
   
-  
-  
-  
-  
-  
-  
+  ##### Exmple: store the name and size of the dire Alnafi in a file
+   ```
+    ls - ltrh | awk -v OFS="\t" 'BEGIN {printf "%s\t%s\n" , "NAME", "Size"}{print $9, $5}' : here printf used to define header
+   ```
   
   
   
