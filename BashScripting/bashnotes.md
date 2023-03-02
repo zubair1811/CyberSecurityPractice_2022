@@ -958,7 +958,7 @@ echo "${fullname^^}" ```
   awk -f simple.awk
   ./simple.awk : directly will not work
   insert sbash line
-  #!/usr/bin/awk
+  #!/usr/bin/awk -f
   ```
   
   ```
@@ -1007,7 +1007,7 @@ echo "${fullname^^}" ```
   24
   18
   cat num.txt | awk '{if ($1>=30) print $1}'
-  cat num.txt | awk '{if ($1>=10 && $i<=30) print $1}'
+  cat num.txt | awk '{if ($1>=10 && $1<=30) print $1}'
    
   ###### For loop
    
