@@ -1022,7 +1022,7 @@ echo "${fullname^^}" ```
   ```
   
   ##### Exmple: store the name and size of the dire Alnafi in a file
-   ```[Updated_CV.pdf](https://github.com/zubair1811/CyberSecurityPractice_2022/files/10886897/Updated_CV.pdf)
+   ```
 
     ls - ltrh | awk -v OFS="\t" 'BEGIN {printf "%s\t%s\n" , "NAME", "Size"}{print $9, $5}' : here printf used to define header
    ```
