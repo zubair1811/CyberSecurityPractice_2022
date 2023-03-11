@@ -1,0 +1,55 @@
+# Lecture-1
+## Environmnet for echo
+echo * : show all file nad dir in the exisiting dir
+
+echo D* : show all file and dir satart with D
+
+echo .* : it show all hidden file
+echo .[!.]* : any file star with . and recently updated 
+echo ~ : current position
+echo ~zubair : show zubar is a user with location 
+
+# Lecture-2
+## Navigagtion commands
+
+pwd : print current dir
+absolute path: pwd show the absolute path
+relative path : the fist path is the relative path 
+
+# Lecture-3
+## exploring the dir (use ls command)
+
+ls : lsit files and dir
+discussion on main dirs.
+
+ls ~ /usr : it will list the file nad dir in home (~) and /user as well 
+ls -l --reverse : in reverse 
+ls -d : show dir
+
+less : it is used to read less data, use arrow keys to move
+
+
+# Lecture-4
+## working with commands
+mkdir : creat dir
+cp : copy
+mv : move items 
+
+
+# Lecture-5
+## working with commands further
+type <command name> : its show that what is the command.type of command
+which <command> : show where this command come
+whereis <command> : also show detail of location
+whatis <command> :s show the short detail of the command.
+man <command> : manual of the command
+< command>  --help : show the help
+info : it show the detail of th commnad exist in the system
+
+
+
+# Lecture-6
+## redirecting things
+
+# Lecture-7
+## redictecting things 
