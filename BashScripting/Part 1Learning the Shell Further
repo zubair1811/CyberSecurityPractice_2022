@@ -51,5 +51,17 @@ info : it show the detail of th commnad exist in the system
 # Lecture-6
 ## redirecting things
 
-# Lecture-7
+# Lecture-6
 ## redictecting things 
+| : pipe command
+uniq : remove doublecate
+wc : world cound
+head : show first line
+tail :last lines
+ tail -f : show data as file grows
+ 
+ 
+ #### shortcut commands
+ ctrl + a = curse begining of the lines
+ ctrl + e = end of the line
+ ctrl + l = clear the screen
