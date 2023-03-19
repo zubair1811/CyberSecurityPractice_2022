@@ -1034,16 +1034,3 @@ echo "${fullname^^}" ```
     i : insert beforethe line
     a : inser after the line
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
