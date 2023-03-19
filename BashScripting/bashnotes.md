@@ -55,13 +55,14 @@
 ## Lecture-3
 
 #### How to cahnge the shell
+```
 1- ```echo $SHELL``` : chcek current shell
 2- ``` cat /etc/shells ``` check the all exiting shell and seect the location which you want to select
 3- ``` cat /etc/passwd ``` :verify the current shell against login user
 4- ``` chsh `` : this cmmand used to change shell, asked the login user passwrd
 5- ``` /bin/bash ``` slect the your desir shell in my case i am moving sh to bash
 6- ``` cat /etc/passwd ``` :verify the current shell against login user. some time does not show in ```echo $SHELL ```
-
+```
 
 #### Debugging 
  ```
