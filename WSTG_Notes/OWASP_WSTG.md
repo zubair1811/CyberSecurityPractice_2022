@@ -51,15 +51,16 @@ send requests investiage its response and compared to databases to known the ser
   3. Virtual hosts: Example ``` www. example.com, helpdesk.example.com, webmail.example.com belongs to single ip```
      - single ip belongs to a multiple DNS names
    
-   Approach to test the challenge: discover the Web information as per above mentioned challenges
-   1- Deal with Non-Standard URLs : 
+   #### Approach to test the challenge: discover the Web information as per above mentioned challenges
+   
+   1. Deal with Non-Standard URLs 
      - Vulverability scanners: Nessus, Nikto
      - use Google doreking with site operator to find all hidden urls
      - dictionary-stylle search (intelligent search)
-  2- Deal with NOn-standard Ports
+  2. Deal with NOn-standard Ports
      - Use of Port scanner tools like **nmap** : Example script ```nmap -Pn -sT -sV -p0-65535 ``` for all 65535 TCP port address space
        then based on the results we chcek the port information or webiste with port as mentioned above
-  3- Deal with Virtual host: DNS names associated to IP address 
+  3. Deal with Virtual host: DNS names associated to IP address 
      - DNS Zone Transfers: Find DNS using NS in tools like
        - host  ``` host -t ns www.example.com``` and then ```host -l www.example.co  <dns result oh host with ns>```
        - dig
