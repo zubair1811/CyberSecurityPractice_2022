@@ -63,13 +63,14 @@ send requests investiage its response and compared to databases to known the ser
      - DNS Zone Transfers: Find DNS using NS in tools like
        - host  ``` host -t ns www.example.com``` and then ```host -l www.example.co  <dns result oh host with ns>```
        - dig
-       - nslookup 
+       - nslookup   ``` nslookup testphp.vulnweb.com ```
      - DNS inverse Quries
      - Wen-based DNS Searches
        - Netcraft
      - Reverse-IP Services
        - with search engine Bing: example: ``` ip:x.x.x.x```
-       - whois: this is a website to check DNS
+       - whois: this is a website to check DNS. It is also avaible in linux. ``` apt install whois ```
+       - viewDNS
        -DNSstuff
        -Net Squre
    
