@@ -43,6 +43,40 @@ send requests investiage its response and compared to databases to known the ser
  - wapplayer : it is an extentiono the teh web broweser that automatically performed the banner grapping.
    
 
-  
+  ## Enmeration: web application discovery 
+  Factors on influencing how many app. are related to given DNS name (or IPs).
+  1. Different Base URL or NOn- standard URLs: Example: ```www.example.com/url1, www.example.com/url2, www.example.com/url3```
+  2. Non-standard Ports: Example: ``` www.example.com:port like www.example.com:2000/ ```
+     - Web app usauly live on port 80(http), 443(https)
+  3. Virtual hosts: Example ``` www. example.com, helpdesk.example.com, webmail.example.com belongs to single ip```
+     - single ip belongs to a multiple DNS names
+   
+   Approach to test the challenge: discover the Web information as per above mentioned challenges
+   1- Deal with Non-Standard URLs : 
+     - Vulverability scanners: Nessus, Nikto
+     - use Google doreking with site operator to find all hidden urls
+     - dictionary-stylle search (intelligent search)
+  2- Deal with NOn-standard Ports
+     - Use of Port scanner tools like **nmap** : Example script ```nmap -Pn -sT -sV -p0-65535 ``` for all 65535 TCP port address space
+       then based on the results we chcek the port information or webiste with port as mentioned above
+  3- Deal with Virtual host: DNS names associated to IP address 
+     - DNS Zone Transfers: Find DNS using NS in tools like
+       - host  ``` host -t ns www.example.com``` and then ```host -l www.example.co  <dns result oh host with ns>```
+       - dig
+       - nslookup 
+     - DNS inverse Quries
+     - Wen-based DNS Searches
+       - Netcraft
+     - Reverse-IP Services
+       - with search engine Bing: example: ``` ip:x.x.x.x```
+       - whois: this is a website to check DNS
+       -DNSstuff
+       -Net Squre
+   
+   
+   
+   
+   
+   
  
 
