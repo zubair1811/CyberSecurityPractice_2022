@@ -72,8 +72,58 @@ send requests investiage its response and compared to databases to known the ser
        - with search engine Bing: example: ``` ip:x.x.x.x```
        - whois: this is a website to check DNS. It is also avaible in linux. ``` apt install whois ```
        - viewDNS
-       -DNSstuff
-       -Net Squre
+       - DNSstuff
+       - Net Squre
+   
+## Fingerprint Web Application Framework
+      - Idendify the web application framework like Wordpress, PhPBB, mediawiki
+      - understant and investiagte the HTML header, cookies, and directory structures
+      - NOTE: WEb framework have several markers, automatic tools identify these markers and comapre with database
+   
+### Black-Box Testing : identifyframework and components
+       - HTTP
+       - Cookies
+       - HTML
+       - Specific files and folder
+       - File extension
+       - Error messages
+   
+#### HTTP:
+  - identify ``` X-Powered-By``` field in the HTTP response header and known the framwwork used
+    - TOOLs
+      - Netcat
+      - whatweb
+      - Through exploring incpect elements
+#### Cookies
+   - Identify the cookies in HTTP respose common cokkie names can be find by googling and [here](https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework.md)
+90
+   - This is more reliable for identification 
+   - used fir session hijacking
+   
+#### HTML Source Code
+   - Find certain patterns in HTML page source code
+   - Find certain liks to framework-soecific CSS or JS folders
+#### Sepecific Files nad Folders
+   - Identify traget web app folder and files structure on the server
+   - Techniques called dirbusting.
+   -TOOLs:
+     - Burp suite
+     - Drupal Botcha 
+     - NOTE: First check the robots.txt some time get the dir structure infomation and framework here
+ #### File Extenstions
+   - identify url with file extention
+   -Common file extension
+      - .php- PHP
+      - .aspx- Microsoft ASP.NET
+      - .jsp - Java Server Pages
+ 
+ #### Error Messange
+   
+     - undetant and explore the error maeesages
+### TOOLs:
+   - Weppalyzer
+   - whatweb one of the best: default in kalilinux)
+   
    
    
    
