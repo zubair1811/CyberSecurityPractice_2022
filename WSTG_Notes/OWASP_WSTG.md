@@ -1,13 +1,39 @@
 # HERE we will dicuss the the OWASP defined WSTG
 
 
-
-
-
-
-
-
 # 1- INFORMATION GATHERING
+
+## Webserver Matafiles for iunformation leakage
+#### Obactives:
+1. Identify hidden infoation
+2. Extract and map other information to undersatant the system
+
+
+#### Tools:
+1. Banner grapping (Browsers with dorking)
+2. curl
+3. wget
+4. ZAP
+5. Burp Suite
+
+##### Imporant Files
+**robots.txt**: use by web spiders, robots or crawlers to update web app information
+- ```curl -o -Ss <target site url/robots.txt> && head -n5 robots.txt```
+- WEbaster tools from google
+
+**Sitemaps**: developers provide informatin aboiut the pages, videos and other fies 
+- ```wget --no-verbose  <target site url/sitemap.xml> && head -n8 sitemap.xml```
+- Example: www.google.com/gmail/sitemap.xml
+
+**security TXT**: Allow websites to define security policies and contact details. This is implemented by Google, Fcebook, Gihub, the UK government andmany other counties. detain can be found [here](www.securitytxt.org)
+- Loaction: in root /seurity.txt or ./well-known/security.txt
+- wget --no-verbose <target site url/security.txt> && cat security.txt```
+
+**Humans TXT**:  Knowning the peopoel behind a website, which contribute to build it.
+- wget --no-verbose <target site url/humans.txt> && cat humans.txt```
+
+
+
 
 
 
