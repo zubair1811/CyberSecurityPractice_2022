@@ -3,6 +3,20 @@
 
 # 1- INFORMATION GATHERING
 
+There are two types of information gathering or cyber reconnaissances
+1. **Passive Testing**
+- Get infomation of the target without direct interacting with target.
+- Target not know you are geting information about them
+- Use Open source intelligenve (OSINT) to get IP,, DNS, email, names, hosts and software running details etc. and its association with Common vulnerability expolites (CVE)
+- Google Hacking or Dorking, Netcarft, Shodan search engin etc.
+3. **Active Testing**
+- Directly interact with target to get information.
+- Using Tools to sent different types of request to the target system and investiage the responses
+- Like open poerts, connected devices, 
+- It can alerting target to get our activity
+- Tools: Nmap,Nessus, Nkiito 
+
+
 
 ## Web server Fingerprinting
 
