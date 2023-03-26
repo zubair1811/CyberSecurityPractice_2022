@@ -1,0 +1,454 @@
+ This is file for second moudule of the RHEL course 
+
+
+
+##### How to confugrie IP in the lix machine ? ###
+1- check the ip of the base machine (if you are in mirtual machine)
+example: 172.30.1.16 base ip, gateway: 172.30.1.245, neymask:255.255.255.0
+2-find the next ip of the assigned base ip 172.30.117 all other ame
+3- go to setup --- ip static 
+4- assign the uper selected ip using static way.
+5-run command <service network restart>
+6- run ip r l : to chcek the ips
+if not working then 
+1- got to network driver: /etc/sysconfig/network-scripts/ifcfg-eth0 
+2- change ONBOOYT=yes
+3-service network restart
+4-test ipp r l
+
+if not working
+go to v, settimng in NW change NAT to bridge
+
+
+#### How to list the devices in pc
+lspci -vvv
+
+ethtool eth0 : this show the cdetail of the eth0
+
+ifconfig eth0 192.168.1.103 netmask 255.255.255.0 this wil temperary set the ip.
+for permonant save go to /etc/sysconfig/network-scripts and work on ifcfg-eth0. edit into ifcfg file.
+
+
+#how to add gateway in linux.
+route -n: check the gate way 
+
+route add default gw <gatway given by conay>
+
+restart service 
+note :
+you can use one by obe setting as well
+ifconfig eth1 down
+ifconfig eth1 up
+ifup eth1
+ifdown eth1
+
+
+
+
+
+##### IP
+ip add list
+ip r l
+ifconfig # this is an old command
+
+
+####### Troubledhooting to solve DNS problem
+network services: in RHEL 6
+Netwok
+network manager NM (close in RHLE and use in 7)
+if use in 6 it gives error.
+
+service NetworkManager stop: this command use to stop network manager
+chkconfig NetworkManager off: this commnad used to not auto start the network manager service
+we can off the NM_control in /etc/sysconfig/network-scripts/ ifcfg-eth0 
+
+
+
+###### IP Aliasing: adding additional IP in linux.
+
+at each interface we can assigned 256 Ips (it may be more)\
+
+how manage IP?
+Network drivers manage/conyrols the IPs
+
+
+ifconfig eth0:1 10.0.2.26 netmask 255.255.255.0 : This command used to create ip on interface here eth0 is the interfcae we make new with name eth0:1 and than used netmask. this process called ip aliasing.
+ 
+NOTE: This method is temporray .
+Q: how to make it permonenet? 
+Why we used IP aliasing?
+This is used to communicate between different machines with different IP class with out router, just on switch.
+
+inet: It is the Ip adress
+IP 4: 4 octate
+IP 6 : 8 Octate hexadecimal + MAC ID
+MAC is uniqe and is more important than IP.
+Q: WE vcan change MAC id on softrae level but hardawre level not possible.
+
+IF Network interface card (NIC) has two port than each poart has own MAC address.
+locathost: lo: 127.0.0.1
+
+##### PROTOCOLS #######
+Protocols: http ftp, smtp, ssh, nfs, dns, dhcp, smb
+http: web pages, web broweser
+ssh: remorte session
+ftp: data transfer
+
+How to open the port:
+start the service. <service http start> This commnad start the service. 
+To close the port, stop the service 
+
+###### PORT $###
+
+Each service have its own port like http have 80. We can change the port as wellin the config file of that service.
+http: 80
+https:443
+dns:53
+ssh:53
+ssh:22
+telnet:23
+mysql:3306
+ftb: 21/20
+smtp: 25
+pop3: 110
+imap:143
+posp3 995
+imaps:993
+ldap:389
+tomcat: 8080
+rdesktop: 3389
+samba:137/139/445
+squd:3128
+
+WE can also check these file in etcsercice file
+
+/etc/service
+
+
+Ports
+0... 65535 total ports
+1...1023 priveleged ports
+1024....65535 non priveleged ports (not in common use)
+
+#### How to check port
+1-Namp: che the whole network <ip of the network>
+nmap network ip
+nmap <127.0.0.1> local check th open ports
+nmap <ip of the remorte machine> check the remorte machine ip.nmap
+
+2-telnet: it also chcek open port
+telnet <ip address><port no>
+
+3-nc :netcat
+nc <ip address>: if does not show anythin that mean port is oopen
+
+This cpmmand used to to get the status of vthe ports 
+netstat -an
+netstat -vatnp
+netstat -tulnp this used mostly.
+These commnads show the status on each port.
+netstat -tulnp | grep -i 22: 
+netstat -tulnp | grep -i <proposs id>
+ss -tulnp | grep -i <process id>
+
+#### ping###
+It is also NW latency and monitorinng tool.
+by default it sent 64 byte.
+ping -c 6 -s 1024 <ip>:here c is cout s is size.
+Question: Why ping does not have port.
+All others work based on ports
+Ans:it does not a service. This is the reason ping does not establish connection
+ping use ICMP protocol.
+Working Flow.
+request
+id
+echo request (request called echo request with id)
+id=8
+echo reply (response)
+id of reply is 0.
+ping -I eth1 <ip>: this command used to select specific interface
+
+tcpdump: packet capuring tool
+
+#### Network Trafic monitoring tool,
+Q1= If network slow how to chcek it.
+ping,
+tcpdump,
+traceroute
+netstat
+wireshark
+ipref
+iptraf
+nmon
+
+############### Packet Management: Software installlation #######
+Linux by defalut not have .exe instead it have rpm: redhad packet manager
+linuz; .rpm, .deb
+##rmp based 
+redhat
+centos
+redero
+suse
+sles
+##.deb based
+ubuntu
+linix mint
+debain
+sebaion
+
+### Command to install package
+rpm -ivh <package name>.rmp
+dpkp -i <package name>.dep
+
+
+rpm -qa: This is use to check all install software : 
+rpm -qa: query all rmp is work as DB here which mange all softares
+
+
+### We can installl packges from DVD
+go to the DVD of the RHEL 6/7/8 which is your OS.
+go to package folder, copy the desire package 
+rmp -ivh <package name> : here i is install, v verbose h hash
+rmp -ivh --force <package name> : forcefuly install the package if get error
+to check where it is install
+rmp -qlp <paclage> : qlp qury list packge
+## How to Upgrade packge in linux
+go to websites download latest version
+rpm.pbone.net
+filewatcher.com
+rpmseek.com
+
+Download :
+wget <url of the pacgake>
+curl <url> both are CL downloader
+run
+rpm -Uvh <package name latest>
+
+What is has
+It is a DB to make content short.
+Note when we install it show ###### this does not show junk content.
+######### How to uninstall software ###
+1- check the all install files using -qa file and delte the all files it can remove the software. bnut it is not good work.
+rpm -e <packet name>: this command remove the package e mean erase.
+
+### Checkk the detail of install package 
+rpm -qi <package name>
+
+
+####### How rmp Works ######
+rpm work on data bases, it maintain it DB. enter the new install package in to its db.
+this databases is at location /var/lib/rmp/
+if this dB crft than rmp does not work. if it cruft then we rebuld the db using some commnad like 
+rmp --rebuilddb.
+
+all the commnad used rpm is badsed on this database.
+
+#### There are three types to install a software in linux.
+1. rpm way(manual way)-- yum instal (automatic)
+2. source code -- compilation --tar ball
+3. SRPM --- Instalation
+
+Note: Can you use .exe file diresctly in linux
+by default N it des not work but we can use with the help of some softwares.
+1-wine software. it is an emulator . small software works well but big software crashes.
+2.crossover-- comercial --not in production
+
+
+##### Process and demons :SWAP ###
+What is SWAP?
+swap is a virtual membery. It is a partion in your HD. swap is a aprtial expansion RAM.
+SWAP is not mandatory. SWAP use VFS Virtual File systen-- SWAP FS.
+VFS just store process.
+etx4,ext2 and ither strore data.
+%%%%Task:%%%%%
+we create a SWAP of 256M.
+SWAP mostly double the RAM memery. To make it double is not thum rule or compulsory. It depents upon application requirment. To make SWAP is also not required.
+to check the minimum SWAP requrment can be checked from redhat website (minimum recommendadtion of SWAP)
+If application is active in RAM then appliaction will not move in SWAP.
+
+To deside the SWAP we also have meeting with application team.
+
+##### Can we extent the SWAP. HOw we can Extent the SWAP ###
+
+free -m : this commnad show the SWAP in system
+swapon -s : show the partition where we haave swap.
+fdisk -l: Alsouse this command 
+
+Answer: There are three way to extent the SWAP
+1. fdisk part way
+2. File way
+3. file way with different commands
+Check the geek diary website or google the query.
+
+##### Which process using SWAP ###
+ever process as pid directory in /proc/ directory 
+within pid directory of every process there is a status file
+status file show the detail about SWAP.
+
+To check the SWAP of all process instead of one by one as we are doing above we can use bash script from internet stackoverflow.
+
+
+########## Performance Monitoring ####
+top command 
+PR- Priority
+NI - NIce Valie
+RES- Resident memery
+SHR-- Shared memoryS-- process state
+CPU-- CPU utilization
+MEM- memory utilization
+TIME- Process running time
+command- Process Name.
+top n1> <file name>
+we can type the user name in the top writer and get the detail of the that user.
+check: binarytides.com for top commands 
+there are multiple flages in top called toggle.
+
+practice 10 examples with different flages.
+
+### Linux Process States ##
+R - Running State
+S- sleeping
+Z=zombie
+Ss = seasion 
+uninterpteble - zombie (due to wrong application design ) 
+zombie --dead process - waiting to kill by parents 
+which parent start this procee only kill that process other wise it will remain inactive and take place in memory.
+
+###  How to kill zombie processs?- reboot
+chck zombie in top command 
+
+Proess state can be check from top, ps -ax 
+
+In Linux we can speed up the process in cpu through nice value.
+-19 Heighest priority
++20 lowest priority
+
+Press R in top interface and enter the pid of the process which want to change the Nice Value (NI)
+CPU have cycles it forward the priorty process into 3 cycle for fast processing.
+
+
+### Finad command ###
+find / -user zubiar : it find the user related info. in /. owner related file search.
+
+find / -name <name>: name related serach 
+
+find /opr zubair exec rm -rf {} \;# this command consits of three parts
+
+1- find /opt zubiar : this finds the file which owner is zubair 
+2- exec this commmand take the previous command value and execute the next command
+3- rm -f: this is the command here 
+{}: indicates that it will recived the find commnad result
+\;: \ indicates that this is a simple command and ; used to terminate the command
+
+find /opt/ -perm 777: find te files which have full permissions (777)
+find /op/ -perm 777 -exec chmod 666 {} \; : this will change the permision 
+
+##### Days files, check techmint.com/35-practile-example-of-linux-find-command
+mtime: modifiy time
+ctime: change time
+atime: access time
+
+find / -mtime -10: it will show in 10 days modifies files
+find / -mtime +10 : it will show the ten days older files
+
+find / -mtime -10 -exce rm -rf {} \;
+
+
+################# FS heriechy ####
+/var: contains logs(log means daliy activity of the system) like in windiw event viewer
+
+/var/messages: it conatin the system common logs 
+head : command read first line (bydefault read 10 lines) 
+head -20 : here 20 define number of fisrt line
+tail: read last lines
+tailf or tail -f: this read the real time
+
+var/dmesg
+dmesg: diagnostic message, os detected gardware logs
+dmesg: device manager windows
+NOte: this is used to the installed hardare related info
+but does not show the all motherboard information
+
+##To check the moterboard info. used the below commands
+dmidecode: show the indepth detail of the motherboard
+biosdecode
+
+
+####
+/var/log/secure: authemtication related files 
+These files have some more files which is the backup of these files, log sysytem policies set some threshod for file size if file size increse this take the backup emplt the main secure file.
+
+We can change these polices through logrotaion 
+we can do logrotaion --wiith logrotation service ls 
+
+
+## /optional directory 
+##/tmp : temorary files, create the tempery file of the apploactions .lock files.lck files,
+it assign sticky bit permisions thats by it show green .
+why tmp assign sticky bit permision?
+
+lost+found: Data recovery files
+/boot: It has kernal files 
+vmliniz files in boot is teh kernel, it is develop in c c++, compolied binary and compress with bzip formate
+
+#### du command
+du -sh <name of the kernal as vmlinuz show in boot> : thgis command show the size of the kernal, du: mean due usage.
+
+du: show space allocated for that file in hhd, where s: flag represet summarize, h: indicate human readable formate 
+
+du -ah | sort -n -r | head -n 20: this show the large file firt
+
+thegeeksstuf.com: du command examples
+
+### /boot/grub
+boot loader in linux: LILO, GRUB, grup dir is very importatnt .
+
+
+####/dev: device derivers
+
+find the files with its file type:
+ls -l /dev* | grep ^c : c here is the characteer file
+ls -l /dev* | grep ^s: s here is the socket file
+
+### character file is the special files in binary formate it is load in RAM. This is used to help communicate two diffrent component.
+Example: lp0: this is the printer drivder, sda1: this is the HDD driver, However, lp0 is the character file while sda(HHD drivers) are in binary formate.
+
+/dev/nst0: block device
+LTO- linear tape operator or tape device: This tape device uses caset case (cc)which has different cpompresion ratio thsi is used to back up the data i n tape device inseat of HDD. HDD is coonect with the tape device through Netwok work (fiber connectivity)
+so, nst0 is the deriver to cooncte the device with system.
+%%%%Q---HOW to take backup in tape?
+tar -cvf /mnt/box.tar <destination>  /home/* <sourse>: for tape device we repalce desitation with tape deriver.
+tar -cvf /dev/nst0 /homw/*
+
+## Full OS backup.
+tar -xvf /dev/nst0 /* 
+ ### HOw to manage the tape deive;
+for this perpous use mt tool
+mt -f /dev/nst0 status: chcek satatus
+mt -f /dev/nst0 forward: move foreard the tape
+mt -f /dev/nst0 rewind:
+
+YUM install mt -y: install mt tool
+check website:  cyberciti.biz
+
+
+
+
+
+
+######### YUM: yellow dog update modifier ####
+
+
+
+##### INterview Questions ###
+Q.Server utilization (Load on server)?
+There are 4 cases.
+Case-1: Process utilization 100%
+
+Case-2: Hardware and Network
+
+Case-3: Cache and Buffer overflow (memery leakage )
+
+Case-4: Hardware Error 
+
+ 

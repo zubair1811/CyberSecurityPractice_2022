@@ -1,0 +1,264 @@
+gZIP/bzip2 archive and compress both
+##################Compresssion (deflattig) and decompression(inflatting)
+
+gzip : it is bit fast but low compression
+gunzip: to uncompress gzip file
+bzip2: it is slow but high compression
+bunzip2: to uncompress bzip2 
+
+Note:
+compresss file can not be read using cat but can be read with zcat comamnd
+zcat: to read gzip
+bzcat: to read bzip2 compression
+
+################Archive
+zip <destination address + file nane.zp> <what you want to archive/backup>
+
+estention of the archive file just not matter but face difficulty during unarchie to check formate 
+file <filename> 
+
+REname the extention or file name
+mv <filename to change>  <new name for file>
+mv: is also used  to cut and pass data
+
+
+
+#########################  Quires regarding zip/unzip
+1-additing new file in existing zip
+2-how to exreaxt specific file from zip
+3-how we can change the compression ratio
+4- how we can proctact zip using password
+
+
+
+
+
+####################### TAR : Tape archive ##### (It is linux native tool)
+1- it only archive not compression
+
+
+tar -cvf <filenme.tar> : create tar file where cvf mean create verbose file
+tar -tvf <filename.tar>: view tar file where tvf mean list verbose file
+
+to use compression with tar we have two options
+1- tar + gzip = tar -zcvf <filename>: add z to represent zip
+2-tar +bzip2 = tar -jcvf <filenema> add j to represent bzip2
+
+
+
+
+
+################# Backup tool ###########
+cp: copy past  (does not copy directory)
+cp -rv : also copy directory
+rsync: it is very powerful tool (local and remote backup)
+rsync -rv : for directory backup
+scp : this is also used for backuo
+
+rsync -avz <sourse>  <destyination> : here -avz  z mean compress
+
+1- rsync update the backup file based on modify time
+
+stat <filename>; this commnad use to get detail of the file 
+
+
+############ Commercial Backup tool
+1- vertias netbackup
+2- windows NT backup
+3- TS<
+4-VEEAM
+5-DELL Networker
+6-EMC Networker
+
+##### In linux we can use open sourse tool to use the above mentioned software
+
+AMANDA + ZAMANDA + BACULA + BACKUPC
+
+
+############ Hard disk Related topics 
+addd hard disk if there is no space available in / directory
+
+1- add external physical hDD
+2- use usb drive as drive
+3- use SAN box (collection of hard disk)
+SAN box: hard disk coolectively make one storage called LUN where we can create partition. LUN = Logical unit number 
+HBA card from linux server connect with SAN box HBA via fiber channel cable.
+
+disk discover- diskn scan in linux server to find lun in SAN box.
+SAN storage= Target
+scsi controller: a controller which control the HDD in SAN
+
+echo "---" > /sys/class/scsi_host/host0/scan 
+we run above command three time 
+
+
+##### Partition
+parimary only 4
+extented 1
+logical 63 (within extented)
+Note; extented make on primary then create logical in extented 
+sda1 sda2 sda3 sda4 primary and logical always start with sda5.
+<a> here represent the drive it may change how many drive we have.partio
+
+
+Partitiaon table types
+1- msdos/mbr (4 primery partition is the msdos/mbr rule)
+2-GPT (in GPT we can make 128 primery partitions)
+parted -l /dev/sdb: use to check the partituon table type
+
+sync: this commnad write the data from memory to hard disk. this command can be use after creating partintion 
+
+df -hT : here T used to displya file system as well.
+for permonant mount we add the mount data in to etc/fstab
+: Note:
+after that we check chcek the mount using mount -a 
+this coomand chcek the mount is correct or not.
+fstab: contains 7 feilds : FSCK is the last two feilds , This is used for file system check and recover.
+
+badbolcks -v /dev/sda1: this is used to check bas sector or blocks in disk.
+ if we have badblock than recover using fsck commnad
+
+e2fsck /dev/sda1: this is used to recover file ystem (clean bad sectors)
+e2fsck -yc /dev/sda1: this same as above but give complete details of the recovery. Here -y is also used to automate the repariming systems.
+etc/fstab: in this file we add the mounted driver detail to mount it permomentlyinstead of adding 'dev/sdc1' driver name ad first feild we can add UUID=universer unique ID for the vcoresponding deriver 
+blkid /etc/sdc1 : this command used to find block.
+it is stored in etc/disk/by-uuid/
+lsblk: this is teh best command to check the app partition details with deriver:
+
+
+wc -l = world count list: it is used to count files 
+
+ls | wc l: here pipe | is used to assign the output of first command into secint
+
+
+fstab: it contains 6 feilds 
+feilds 5: indicates permisions values 
+thesee cane be used in feild 5: ro (read only), user,nouser, noauto,noexex
+if it is default: default contains seven things
+auto,rw,dev,async,suid,exec, nouser
+after changes run commad mount -o remount /part1/
+
+
+Interview Question:  
+1-apache. lvm,mysqk,boot process, suid, stickybiy
+2-Difernece b/w mkfs.ext3, mkfs.ext2, mkfs.ext4, xfs etc fdind its answer.
+journaling : maintain additional metadada recorders.
+ext2: non journaling file system, less file crash recovery 
+ext3: if we use this file system we can make 32000 folder, journaling FS, fast file crash recovery, we can to off journaling, signle file can be upto 2TB
+ext4: 64k folder can be made, we can off/no journaling, signgle file can be upto 16TB, no snapshots.
+xfs: data performance very dood, take snapshots
+
+
+
+
+
+
+######## Processs and deamons #####
+the file which are loaded in RAm called open files.
+to check open files use command : lsof : mean list open files
+
+
+
+################### grep ####
+this command used to grep the specific items
+
+grep gdm  /etc/passwd: this mean show gdm from the /etc/passwd file
+grep gdm --color /etc/passwd: this is used to show color
+grep -A1  /etc/passwd : this show the next 1 line as wll
+note A2: show next two line and soon on
+
+ls /etc/* |grep -i host : hear i used to ignore small and captial leter include both
+
+ls /etc/* | grep -1 host | wc -l: show th world cpunt list from the output result
+
+
+
+
+###### Find and locate
+find: It is slow, chcek each file and folder to the provide  query, i does not ubased on database.
+locate; it is fast, it maintain databases, databases location is /var/lib/mlocate/mlocate.db, 
+locate need to update databse if new file created 
+
+#### find
+find /etc/ -iname host*: find all host here i incicate include uper and lower cases both.
+find / -name "*.txt" : find all txt file
+
+
+#### locate
+locate psdd: locate psdd file 
+
+updatedb: this command update the locate db. if new files are created.
+
+
+####### process and deamons #####
+What are Process monitoring tools?
+
+ps : this command usec to find process for current terminal <echo $$> this command can also be used instead of ps.
+ps -el: this give list of the process
+ps aux: it show the process list with cpu used by him. it beteer instead of ps -el.
+kill <[process id>: this command used to kill the process
+pidof <name of the process>: This command use to get the process id
+pgrep <name of teh process>: this also used to find process id
+pkill <name of the provess>: kill the process
+
+pstree: this gives the whole tree of the processs
+lsof: this show all process
+top: its also show process (it sis similiar to control panel in window)
+we can to not store the realtime output of the top in to a file. it we want then we pass n1 flag with > 
+top -n1 > /opt/top.txt
+
+Note: init have pid 1 always, and it is called father of all process.(it is till RHEL 6). IN RHEL 7/8 systemd is the father of all process.
+
+
+###### How to check the load of the process ###
+
+top: this is teh command to check load 
+/proc: this  directory contains process filse navigatted from RAM.
+
+#### 1- first row indicate the update of the system and user.
+this uptime can also be seen using.
+1- uptime: command
+2-/Proc/uptime
+
+####2- load in fisrt line, fisrt show 1 mint, 2nd show 5 mint, 3rd show 15 mint previous load.
+Note : free -m : this used to chcek used and free RAM memory.
+
+&: this is used to put the process in background with in the shell.
+example: gedit&: this process run in background, if you terminae the termina then this process finshed.
+
+nohup: this put the process in the background out of the shell.
+
+
+fg:to the chcek the backgroup process (bg,jobs: thes commands also used)
+
+##### How kill works
+it communinoayte kernal 
+kill -l: it shows the all signals of the kill used.
+bydefault it used 15 number signals 
+to kill anly process by force used signal 9: kill -9 <pid> 
+
+
+##### how to terminate the init processs ####
+
+init has pid 1: this can not be kill also with forcefully .
+to kill this process we used BOM: Fork bombing.
+:(){};: this command fill the RAM and crash the whole system.
+
+How to limit FORK BOMING?
+
+
+############## DEamons mean services ####
+atlast it is a process.
+one you start it keep running once you stop.
+example:
+run ls in terminal it run and end.: it process.
+open firfox and run atleast we close it: it is deamons
+
+deamon are two types. 
+applications: deamons: if we kill this deamons no impact os system,
+example: gedit, firfox, terminal
+system deamons: if we kill this deamons this may crash system. 
+example: init
+
+
+ 
