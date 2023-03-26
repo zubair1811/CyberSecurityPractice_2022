@@ -15,3 +15,20 @@ SSS: scalable, secure, stable
 
 create multiple files 
 touch file {1..100}
+
+
+#### Absolute vs Relative
+Absolute Path: start with "/", pwd shows the absolute path
+Relative Path: folder by folder
+
+##### Short Commands
+ctrl + N : GNOME terminal approx 400
+
+df -h : disk filesystem in human formate
+
+--help : show help to know flags
+
+su -- switching user
+id: which user i am
+whoami: same as above
+man : manual of the commands
