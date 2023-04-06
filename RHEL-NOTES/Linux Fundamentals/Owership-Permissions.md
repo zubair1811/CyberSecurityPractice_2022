@@ -76,6 +76,18 @@ id <username> : show the id and nam eif the user
   ctrl + u: past 
   ctrl + k : delete
   
-  
+  ##### chattr +i : premmsion restric the rot to remove.
+ ``` 
+ chattr +i <file name> : assign chattr permission
+ chattr -i <file name> : remove
+ ```
+ 
+ Permissin in Octal way:
+ 0 - 7 : 7 mean full, o mean no 
+ read: r=4,
+ write: w=2,
+ execute: x=1
+ 
+ 
   
   
