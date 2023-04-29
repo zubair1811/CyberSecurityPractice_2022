@@ -115,5 +115,11 @@ zip <name of created file >  <file want to zip>
   
   
   
+  ### TASK 
+  1. HOW TO add new files in teh exiting zip
+  2. How to extraxt teh specific file frm zip
+  3. How we can change the compression ration
+  4. Can we do password protection in zip?
+  
   
   
